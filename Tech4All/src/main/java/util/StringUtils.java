@@ -1,0 +1,41 @@
+package util;
+
+public class StringUtils {
+	//Queries
+	public static final String INSERT_USERS = "INSERT INTO users "
+			+ "(First_Name, Last_Name, Username, DOB, Gender, Phone, Mail, Address, Password) "
+			+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	//Queries for checking existing values
+	public static final String CHECK_USERNAME = "SELECT Username FROM users WHERE Username = ?";
+	public static final String CHECK_MAIL = "SELECT Mail FROM users WHERE Mail = ?";
+	public static final String CHECK_NUMBER = "SELECT Phone FROM users WHERE Phone = ?";
+	
+	
+	//
+	public static final String USER_NAME = "username";
+	public static final String FIRST_NAME = "firstName";
+	public static final String LAST_NAME = "lastName";
+	public static final String BIRTHDAY = "birthday";
+	public static final String GENDER = "gender";
+	public static final String EMAIL = "email";
+	public static final String PHONE_NUMBER ="phoneNumber";
+	public static final String ADDRESS = "address";
+	public static final String PASSWORD = "password";
+	public static final String RETYPE_PASSWORD = "retypePassword";
+	
+	//Variables for various messages
+	public static final String SUCCESS_REGISTER_MESSAGE = "Successfully Registered!";
+	public static final String REGISTER_ERROR_MESSAGE = "Please correct the form data.";
+	public static final String SERVER_ERROR_MESSAGE = "An unexpected server error occurred.";
+	
+	public static final String SUCCESS_MESSAGE = "successMessage";
+	public static final String ERROR_MESSAGE = "errorMessage";
+	
+	public static final String USERNAME_EXISTS="Account with the username already exists.";
+	public static final String MAIL_EXISTS="Account with the email ID already exists.";
+	public static final String PHONE_EXISTS="Account with the phone number already exists.";
+	
+	//JSP routes
+	public static final String LOGIN_PAGE = "/Pages/login.jsp";
+	public static final String REGISTER_PAGE = "Pages/Register.jsp";
+}
