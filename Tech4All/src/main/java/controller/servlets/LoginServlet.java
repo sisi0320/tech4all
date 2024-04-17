@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import controller.DatabaseController;
+import controller.database.DatabaseController;
 import util.StringUtils;
 
 /**
@@ -37,7 +37,7 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		
-		int loginResult = dbController.getStudentLoginInfo(userName, password);
+		int loginResult = dbController.getUsersLoginInfo(userName, password);
 		
 		if(loginResult ==1) {
 			//successful login
@@ -48,16 +48,19 @@ public class LoginServlet extends HttpServlet {
 			Cookie userCookie= new Cookie("user", userName);
 			userCookie.setMaxAge(30*60);
 			response.addCookie(userCookie);
-			request.getRequestDispatcher(StringUtils.WELCOME_PAGE).forward(request, response);
+			request.getRequestDispatcher(StringUtils.HOME_PAGE).forward(request, response);
 		}else if(loginResult == 0) {
-			request.setAttribute(StringUtils.ERROR_MESSAGE, "Incorrect username or password");
+			request.setAttribute(StringUtils.ERROR_MESSAGE, StringUtils.PASSWORD_INCORRECT);
+			request.getRequestDispatcher(StringUtils.LOGIN_PAGE).forward(request, response);
+		}else if(loginResult==2){
+			request.setAttribute(StringUtils.ERROR_MESSAGE, StringUtils.NO_ACCOUNT);
 			request.getRequestDispatcher(StringUtils.LOGIN_PAGE).forward(request, response);
 		}else {
 			request.setAttribute(StringUtils.ERROR_MESSAGE, StringUtils.SERVER_ERROR_MESSAGE);
 			request.getRequestDispatcher(StringUtils.LOGIN_PAGE).forward(request, response);
 		}
 	}
-	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

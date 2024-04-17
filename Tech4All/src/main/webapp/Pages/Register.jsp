@@ -6,8 +6,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Register Your Account</title>
+<link rel="stylesheet" type="text/css" href="/Tech4All/Stylesheet/register.css" />
 </head>
 <body>
+<div class="container">
+	<div class="top_bar">
+		<img src ="/Tech4All/Images/T.png" class="logo"/>
+		<a href="Pages/Home.jsp">Home</a>
+		<a href="Pages/AboutUs.jsp">About Us</a>
+	</div>
+	<div class="image">
+		<img src="/Tech4All/Images/RegisterPageImg.png" class="side_img"/>
+	</div>
+	<div class="formbox">
 		<%-- Display error message if it exists --%>
 		<%
 		String errorMessage = (String) request.getAttribute(StringUtils.ERROR_MESSAGE);
@@ -17,7 +28,7 @@
 		<%
 		}
 		%>
-	<h1>Sign Up</h1>
+		<h1>Sign Up</h1>
 		<form action="/Tech4All/RegisterServlet" method="post">
 			<div class="row">
 				<div class="col">
@@ -73,9 +84,11 @@
 						type="password" id="retypePassword" name="retypePassword" required>
 				</div>
 			</div>
-			<button type="submit">Submit</button>
+			<center><button type="submit">Register</button></center>
+			<center><h5> Already have an account?</h5><a href="Pages/Login.jsp">Log In</a></center>
 		</form>
-		<p> Already have an account?</p><a href="Pages/Login.jsp">Log In</a>
-	
+		
+	</div>
+</div>
 </body>
 </html>

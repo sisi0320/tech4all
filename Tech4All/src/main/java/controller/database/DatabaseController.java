@@ -42,6 +42,33 @@ public class DatabaseController {
 		}
 		}
 	
+	public int getUsersLoginInfo(String username, String password) {
+		try(Connection con = getConnection()){
+			PreparedStatement st = con.prepareStatement(StringUtils.GET_USERS_INFO_LOGIN);
+			st.setString(1,username);
+			
+			ResultSet rs = st.executeQuery();
+			
+			if(rs.next()) {
+				//username and password match in the database
+				String userDb = rs.getString("username");
+				String passwordDb = rs.getString("password");
+				String decryptedPwd = PasswordEncryptionWithAes.decrypt(passwordDb, username);
+				
+				if (decryptedPwd != null && userDb.equals(username) && decryptedPwd.equals(password)) {
+					return 1;
+				}else {
+					return 0;
+				}
+			}else {
+				//no matching record found
+				return 2;
+			}	
+		}catch(SQLException | ClassNotFoundException ex) {
+			ex.printStackTrace();
+			return -1;
+		}
+	}
 	public int checkUsername(String username) {
 		try(Connection con = getConnection()){
 			PreparedStatement st = con.prepareStatement(StringUtils.CHECK_USERNAME);

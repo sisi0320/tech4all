@@ -5,6 +5,8 @@ public class StringUtils {
 	public static final String INSERT_USERS = "INSERT INTO users "
 			+ "(First_Name, Last_Name, Username, DOB, Gender, Phone, Mail, Address, Password) "
 			+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	public static final String GET_USERS_INFO_LOGIN = "SELECT * FROM users WHERE Username = ?";
+	
 	//Queries for checking existing values
 	public static final String CHECK_USERNAME = "SELECT Username FROM users WHERE Username = ?";
 	public static final String CHECK_MAIL = "SELECT Mail FROM users WHERE Mail = ?";
@@ -34,8 +36,16 @@ public class StringUtils {
 	public static final String USERNAME_EXISTS="Account with the username already exists.";
 	public static final String MAIL_EXISTS="Account with the email ID already exists.";
 	public static final String PHONE_EXISTS="Account with the phone number already exists.";
+	public static final String PASSWORD_INCORRECT="Incorrect username or password";
+	public static final String NO_ACCOUNT="No account with the given username.";
+	
+	//Servlet routes
+	public static final String LOGIN_SERVLET="/login";
+	public static final String LOGOUT_SERVLET="/logout";
 	
 	//JSP routes
-	public static final String LOGIN_PAGE = "/Pages/login.jsp";
+	public static final String LOGIN_PAGE = "/Pages/Login.jsp";
 	public static final String REGISTER_PAGE = "Pages/Register.jsp";
+	public static final String HOME_PAGE = "Pages/Home.jsp";
+	public static final String PRODUCT_PAGE = "Pages/Product.jsp";
 }
