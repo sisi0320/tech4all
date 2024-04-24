@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import model.PasswordEncryptionWithAes;
 import model.UserModel;
@@ -69,6 +70,25 @@ public class DatabaseController {
 			return -1;
 		}
 	}
+	
+	//Method to get a user's role
+	public String getUserRoles(String username) {
+		String userRole = null;
+		try(Connection con = getConnection()){
+			PreparedStatement st = con.prepareStatement(StringUtils.GET_USERS_ROLE);
+			st.setString(1,username);
+			
+			ResultSet rs = st.executeQuery();
+			if (rs.next()){
+				userRole = rs.getString("Roles");
+				
+			}
+	}catch(SQLException | ClassNotFoundException e) {
+		 e.printStackTrace();
+	}
+		return userRole;
+	}
+	
 	public int checkUsername(String username) {
 		try(Connection con = getConnection()){
 			PreparedStatement st = con.prepareStatement(StringUtils.CHECK_USERNAME);
@@ -117,6 +137,34 @@ public class DatabaseController {
 		}catch(SQLException| ClassNotFoundException ex) {
 			ex.printStackTrace();
 			return -1;
+		}
+	}
+	public ArrayList<UserModel> getAllUsersInfo(){
+		try {
+			PreparedStatement stmt = getConnection()
+					.prepareStatement("SELECT * FROM users");
+			ResultSet result = stmt.executeQuery();
+			
+			ArrayList<UserModel> students = new ArrayList<UserModel>();
+			
+			while(result.next()) {
+				UserModel student = new UserModel();
+				student.setFirstName(result.getString("First_Name"));
+				student.setLastName(result.getString("Last_name"));
+				student.setDob(result.getDate("DOB").toLocalDate());
+				student.setEmail(result.getString("Mail_ID"));
+				student.setGender(result.getString("Gender"));
+				student.setPhoneNumber(result.getString("Phone"));
+				student.setAddress(result.getString("address"));
+				student.setUsername(result.getString("username"));
+				
+				System.out.println(student.getFirstName());
+				students.add(student);
+			}
+			return students;
+		}catch (SQLException | ClassNotFoundException ex) {
+			ex.printStackTrace();
+			return null;
 		}
 	}
 }

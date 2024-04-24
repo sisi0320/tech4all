@@ -43,12 +43,19 @@ public class LoginServlet extends HttpServlet {
 			//successful login
 			HttpSession userSession = request.getSession();
 			userSession.setAttribute("username", userName);
-			userSession.setMaxInactiveInterval(30*30);
+			userSession.setMaxInactiveInterval(120);
 			
 			Cookie userCookie= new Cookie("user", userName);
 			userCookie.setMaxAge(30*60);
 			response.addCookie(userCookie);
-			request.getRequestDispatcher(StringUtils.HOME_PAGE).forward(request, response);
+			
+			String roles= dbController.getUserRoles(userName);
+			if (roles.equals("Admin")){
+				request.getRequestDispatcher(StringUtils.ADMIN_PAGE).forward(request, response);
+			}
+			else {
+				request.getRequestDispatcher(StringUtils.HOME_PAGE).forward(request, response);
+			}
 		}else if(loginResult == 0) {
 			request.setAttribute(StringUtils.ERROR_MESSAGE, StringUtils.PASSWORD_INCORRECT);
 			request.getRequestDispatcher(StringUtils.LOGIN_PAGE).forward(request, response);
