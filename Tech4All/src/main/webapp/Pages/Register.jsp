@@ -85,7 +85,7 @@
 				</div>
 			</div>
 			<center><button type="submit">Register</button></center>
-			<center><h5> Already have an account?</h5><a href="Pages/Login.jsp">Log In</a></center>
+			<center><h5> Already have an account?</h5><a href="Login.jsp">Log In</a></center>
 		</form>
 		
 	</div>

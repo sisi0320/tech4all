@@ -12,17 +12,18 @@
 	
 		<nav class="navl">
 			<ul>
-				<li><a href="#"><img src="/Tech4All/Images/T.png"></a></li>
-				<li><a href="#">Home</a></li>
+				<li><a href="#"><img src="/Tech4All/Images/T.png"/></a></li>
+				<li><a href="Home.jsp">Home</a></li>
 				<li><a href="#">About Us</a></li>
 			</ul>
 		</nav>
 		<div class="formBox">
 			<div class="logo">
-				<img src="/Tech4All/Images/T.png">
+				<img src="/Tech4All/Images/T.png"/>
 			</div>
 			<h2>Login</h2>
 			<h3>Welcome, to Tech4All!</h3>
+			<form action="/Tech4All/LoginServlet" >
 			<div class="row">
 				<div class="col">
 					<input type="text" id="username" name="username" placeholder="Username" required>
@@ -34,7 +35,7 @@
 				</div>
 			</div>
 			<button type="submit" class="login-button">Login</button>
-			<h5>Don't have an account?</h5><a href="#">Sign In</a>
+			<h5>Don't have an account?</h5><a href="Register.jsp">Sign Up</a>
 			<%--Error message if redirected from register --%>
 			<% 
 			String errorMessage = (String) request.getAttribute(StringUtils.ERROR_MESSAGE);
@@ -53,9 +54,10 @@
 			<%
 			}
 			%>
+			</form>
 		</div>
 		<div class="image">
-			<img src="/Tech4All/Images/LoginImg.png">
+			<img src="/Tech4All/Images/LoginImg.png"/>
 		</div>
 	
 		
