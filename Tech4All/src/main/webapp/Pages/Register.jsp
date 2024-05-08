@@ -29,7 +29,7 @@
 		}
 		%>
 		<h1>Sign Up</h1>
-		<form action="/Tech4All/RegisterServlet" method="post">
+		<form action="/Tech4All/RegisterServlet" method="post" enctype="multipart/form-data">
 			<div class="row">
 				<div class="col">
 					<label for="firstName">First Name:</label> <input type="text"
@@ -84,8 +84,13 @@
 						type="password" id="retypePassword" name="retypePassword" required>
 				</div>
 			</div>
+			<div class="row">
+			<div class="col">
+				<label for="image">Profile Image:</label>
+				 <input type="file" id="image" name="image" accept="image/*" required>
+    		</div> </div>
 			<center><button type="submit">Register</button></center>
-			<center><h5> Already have an account?</h5><a href="Pages/Login.jsp">Log In</a></center>
+			<center><h5> Already have an account?</h5><a href="Login.jsp">Log In</a></center>
 		</form>
 		
 	</div>

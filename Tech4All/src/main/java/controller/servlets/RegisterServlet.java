@@ -4,10 +4,12 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import controller.database.DatabaseController;
 import model.UserModel;
@@ -16,7 +18,11 @@ import util.StringUtils;
 /**
  * Servlet implementation class RegisterServlet
  */
-@WebServlet("/RegisterServlet")
+@WebServlet(asyncSupported = true, urlPatterns = "/RegisterServlet")
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+maxFileSize = 1024 * 1024 * 10, // 10MB max size of file to be uploaded
+maxRequestSize = 1024 * 1024 * 50) //multiple files could be uploaded
+
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -42,7 +48,7 @@ public class RegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		String userName = request.getParameter(StringUtils.USER_NAME);
 		String firstName = request.getParameter(StringUtils.FIRST_NAME);
 		String lastName = request.getParameter(StringUtils.LAST_NAME);
@@ -54,7 +60,9 @@ public class RegisterServlet extends HttpServlet {
 		String address = request.getParameter(StringUtils.ADDRESS);
 		String password = request.getParameter(StringUtils.PASSWORD);
 		String retypePassword = request.getParameter(StringUtils.RETYPE_PASSWORD);
+		Part pfpImg = request.getPart(StringUtils.PFP_IMG);
 		
+	
 		String namePattern = "[a-zA-Z]+";
 		if (!firstName.matches(namePattern)|| !lastName.matches(namePattern)) {
 			request.setAttribute(StringUtils.ERROR_MESSAGE, "Invalid Name pattern");
@@ -116,9 +124,14 @@ public class RegisterServlet extends HttpServlet {
 			return;
 		}
 		
-		UserModel userModel = new UserModel(firstName, lastName, dob, gender, email, phoneNumber, address, userName, password);
+		UserModel userModel = new UserModel(firstName, lastName, dob, gender, email, phoneNumber, address, userName, password, pfpImg);
 		int result = dbController.addUsers(userModel);
 		
+		String savePath = StringUtils.IMAGE_DIR_SAVE_USER;
+	    String fileName = userModel.getPfpUrl();
+	    if(!fileName.isEmpty() && fileName != null)
+	    	pfpImg.write(savePath + fileName);
+	    
 		if (result == 1) {
 			request.setAttribute(StringUtils.SUCCESS_MESSAGE, StringUtils.SUCCESS_REGISTER_MESSAGE);
 			request.getRequestDispatcher(StringUtils.LOGIN_PAGE).forward(request, response);

@@ -7,6 +7,28 @@
     <welcome-file>index.htm</welcome-file>
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.jsp</welcome-file>
-    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
   </welcome-file-list>
+  
+  <!-- Servlet Definition -->
+<!--   <servlet>
+    <servlet-name>CartServlet</servlet-name>
+    <servlet-class>controller.servlets.CartServlet</servlet-class>
+  </servlet>
+
+  Servlet Mapping
+  <servlet-mapping>
+    <servlet-name>CartServlet</servlet-name>
+    <url-pattern>/CartServlet</url-pattern>
+  </servlet-mapping>
+   -->
+  <!--Login Authentication Filter  -->
+  <!-- <filter>
+  		<filter-name>AuthenticationFilter</filter-name>
+  		<filter-class>controller.filters.AuthenticationFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  		<filter-name>AuthenticationFilter</filter-name>
+  		<url-pattern>/*</url-pattern>
+  </filter-mapping> -->
 </web-app>

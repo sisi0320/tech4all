@@ -1,0 +1,84 @@
+@charset "UTF-8";
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0px;
+    line-height: 1.6;
+}
+
+h1 {
+    text-align: center;
+    color: #293241;
+    font-size: 26px;
+    margin-bottom: 30px;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1); /* More refined shadow for subtle depth */
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #293241;
+    color: white;
+    font-size: 18px;
+}
+
+td {
+    background-color: #ffffff;
+    vertical-align: middle;
+}
+
+/* Styling for table forms and inputs */
+input[type="number"],
+input[type="submit"] {
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #ffffff;
+    transition: all 0.2s ease-in-out;
+}
+
+input[type="submit"] {
+    cursor: pointer;
+    background-color: #FFC47F;
+    color: black;
+    font-weight: bold;
+    border: none; /* Remove border for a cleaner look */
+}
+
+input[type="submit"]:hover {
+    background-color: #E6B566; /* Slightly darker for a subtle effect */
+}
+
+/* Checkout Link Styling */
+.checkout {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.checkout a {
+    text-decoration: none;
+    font-size: 18px;
+    background-color: #293241;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+a:hover {
+    background-color: #405d77; /* Subtle change for hover */
+}
+

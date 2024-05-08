@@ -1,0 +1,127 @@
+@charset "UTF-8";
+.products_list {
+   max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.products_list h3 {
+  font-size: 26px;
+  margin: 20px 0;
+  text-align: center;
+}
+table{
+	border-collapse: collapse;
+	border-spacing:0;
+	margin: 0 auto;
+	border-radius: 10px;
+	overflow:hidden;
+}
+th, td{
+   padding: 15px;
+  text-align: center;
+  }
+  th:first-child, td:first-child{
+  border-left: 1px solid #ddd;
+  }
+ 
+  
+ thead {
+   background-color: #293241 ;/* #95A5A6 */
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: white;
+   
+ }
+ tbody {
+   background-color: #ffffff;
+  box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+  border-radius: 3px;
+ }
+ 
+img {
+  max-width: 100%;
+  height: 50px;
+}
+.action{
+	display:flex;
+}
+button{
+	border: none;
+	background: none; 
+	margin-right:5px;
+	cursor: pointer;
+}
+
+.addWindow{
+	display:none;
+	top: 0;
+  	left: 0;
+	position: fixed;
+	text-align:center;
+	justify-content: center;
+	width:100%;
+	height:100%;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+.add-products{
+	width: auto;
+  	margin:15px;
+  	padding: 10px 15px;
+	background-color: white;
+  	border-radius: 5px;
+  	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  	overflow:auto;
+}
+.add-products h3{
+	margin-bottom:30px;
+}
+.prodForm{
+	display: flex;
+    flex-direction: column;  
+	margin-left:50px;
+}
+.close{
+	position: absolute; 
+	top: 0; 
+	right: 0; 
+	padding: 15px; 
+	margin-right:20px;
+	cursor: pointer; 
+	font-size:25px;
+	font-weight:600;
+	color:#ff9214;
+}
+.form_row {
+	display: flex;
+	margin-bottom:15px;
+	gap: 50px;
+}
+
+label{
+	width: 150px;
+	text-align:left;		
+	
+    
+}
+input, select, textarea{
+	width: 55%;
+    padding: 10px;
+   	
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    box-sizing: border-box;
+}
+button{
+	background-color: #FFAC4D;
+    width:150px;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
